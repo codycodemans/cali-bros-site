@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cali Bros is an indie game studio making pixel-art strategy games.">
+<title>Cali Bros Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* CALI BROS — layout: boardwalk arcade at dusk. Pixel sunset hero, one featured game, a shelf of upcoming titles, studio note, contact. Everything scoped under .cb so it can drop into a Squarespace Code Block. */
+.cb{
+  --ink:#0e1a22;      /* night ocean */
+  --ink-2:#15262f;    /* raised surface */
+  --foam:#e9efe9;     /* main text */
+  --mist:#8fa5a8;     /* secondary text */
+  --sun:#ffb347;      /* amber */
+  --coral:#ff6b4a;    /* sunset coral */
+  --kelp:#46c2a0;     /* sea-green accent for status */
+  --display:"Pixelify Sans","Courier New",monospace;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+  background:var(--ink);color:var(--foam);font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body{margin:0;background:#0e1a22}
+.cb *,.cb *::before,.cb *::after{box-sizing:border-box}
+.cb a{color:inherit}
+.cb :focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.cb .wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.cb .label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+
+/* NAV */
+.cb nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid #ffffff10}
+.cb nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.cb .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.cb .logo img{height:40px;width:auto;image-rendering:pixelated}
+.cb .logo-mark{width:40px;height:40px;display:grid;place-items:center;background:var(--coral);color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.1rem;box-shadow:4px 4px 0 var(--sun)}
+.cb .logo span{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:.02em}
+.cb nav ul{display:flex;gap:clamp(12px,3vw,28px);list-style:none;margin:0;padding:0}
+.cb nav ul a{text-decoration:none;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);transition:color .2s}
+.cb nav ul a:hover{color:var(--foam)}
+@media (max-width:560px){.cb nav ul li:not(:last-child){display:none}}
+
+/* HERO — pixel sunset */
+.cb .hero{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,110px) 0}
+.cb .hero .wrap{position:relative;z-index:2;display:grid;gap:22px}
+.cb .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(3rem,10vw,7.5rem);line-height:.9;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.cb .hero h1 em{font-style:normal;color:var(--sun);text-shadow:6px 6px 0 var(--coral)}
+.cb .hero p{max-width:34ch;margin:0;font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--mist)}
+.cb .hero p strong{color:var(--foam);font-weight:600}
+.cb .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.cb .btn{display:inline-block;padding:14px 22px;font-family:var(--display);font-weight:700;font-size:1.05rem;text-decoration:none;border:3px solid var(--foam);transition:transform .15s,box-shadow .15s}
+.cb .btn.primary{background:var(--sun);color:var(--ink);border-color:var(--sun);box-shadow:5px 5px 0 var(--coral)}
+.cb .btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--coral)}
+.cb .btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--coral)}
+.cb .scene{position:relative;height:clamp(220px,32vw,340px);margin-top:clamp(20px,4vw,40px)}
+.cb .sun{position:absolute;left:50%;bottom:44%;width:clamp(180px,30vw,320px);aspect-ratio:1;max-width:100%;transform:translateX(-10%);border-radius:50%;
+  background:linear-gradient(var(--sun) 30%,var(--coral) 85%);
+  -webkit-mask:linear-gradient(#000 50%,transparent 50%),repeating-linear-gradient(#000 0 14px,transparent 14px 20px);
+          mask:linear-gradient(#000 50%,transparent 50%),repeating-linear-gradient(#000 0 14px,transparent 14px 20px)}
+.cb .sea{position:absolute;inset:56% 0 0 0;background:
+  repeating-linear-gradient(#0000 0 10px,#ffb34722 10px 12px),
+  linear-gradient(#1a3440,var(--ink))}
+.cb .sea::before{content:"";position:absolute;left:50%;top:0;width:clamp(120px,22vw,240px);height:100%;transform:translateX(0);
+  background:repeating-linear-gradient(90deg,var(--sun) 0 18px,transparent 18px 34px);opacity:.35;
+  -webkit-mask:repeating-linear-gradient(#000 0 4px,transparent 4px 14px);mask:repeating-linear-gradient(#000 0 4px,transparent 4px 14px);
+  animation:shimmer 3s steps(4) infinite}
+@keyframes shimmer{50%{transform:translateX(12px)}}
+.cb .cliff{position:absolute;left:0;bottom:44%;width:46%;height:48%;background:#0a141a;
+  clip-path:polygon(0 100%,0 20%,8% 20%,8% 8%,18% 8%,18% 28%,30% 28%,30% 44%,44% 44%,44% 60%,58% 60%,58% 74%,74% 74%,74% 88%,100% 88%,100% 100%)}
+.cb .scene::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(#0000 0 3px,#00000022 3px 4px);pointer-events:none}
+
+/* SECTIONS */
+.cb section.block{padding-block:clamp(64px,9vw,112px)}
+.cb .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:36px}
+.cb h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,5vw,3.2rem);line-height:1;margin:8px 0 0;text-wrap:balance}
+.cb h3{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1.1;margin:0}
+
+/* FEATURED GAME */
+.cb .feature{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+@media (max-width:820px){.cb .feature{grid-template-columns:1fr}}
+.cb .shot{position:relative;aspect-ratio:16/10;max-width:100%;background:
+  linear-gradient(45deg,#2b4a2c 25%,transparent 25%) 0 0/32px 32px,
+  linear-gradient(-45deg,#2b4a2c 25%,transparent 25%) 0 0/32px 32px,
+  #35593a;border:3px solid var(--foam);box-shadow:10px 10px 0 var(--coral);overflow:hidden}
+.cb .shot img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;display:block}
+.cb .shot .tag{position:absolute;left:12px;top:12px;background:var(--ink);color:var(--foam);padding:6px 10px}
+.cb .feature-body{display:grid;gap:18px;min-width:0}
+.cb .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--kelp)}
+.cb .status::before{content:"";width:10px;height:10px;background:var(--kelp);animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.cb .feature-body p{margin:0;color:var(--mist)}
+.cb .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff18;border:1px solid #ffffff18}
+.cb .stats div{background:var(--ink);padding:14px 12px}
+.cb .stats b{display:block;font-family:var(--display);font-size:1.7rem;color:var(--sun);line-height:1;font-variant-numeric:tabular-nums}
+.cb .stats small{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
+.cb .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.cb .chips li{font-size:.85rem;padding:5px 10px;border:1px solid #ffffff2a;color:var(--foam)}
+
+/* UPCOMING SHELF */
+.cb .shelf-wrap{background:var(--ink-2);border-block:1px solid #ffffff10}
+.cb .shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:820px){.cb .shelf{grid-template-columns:1fr}}
+.cb .cart{display:grid;gap:12px;padding:22px;background:var(--ink);border:2px dashed #ffffff26;transition:border-color .2s,transform .2s}
+.cb .cart:hover{border-color:var(--sun);transform:translateY(-3px)}
+.cb .cart .slot{font-family:var(--display);font-size:3rem;line-height:1;color:#ffffff1f}
+.cb .cart p{margin:0;color:var(--mist);font-size:.95rem}
+
+/* STUDIO */
+.cb .studio{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,5vw,72px);align-items:start}
+@media (max-width:820px){.cb .studio{grid-template-columns:1fr}}
+.cb .studio p{margin:0 0 16px;max-width:60ch;color:var(--mist)}
+.cb .studio p:first-child{color:var(--foam);font-size:1.2rem}
+.cb .tools{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:20px 0 0;padding:0}
+.cb .tools li{font-family:var(--mono);font-size:.78rem;padding:8px 12px;background:var(--ink-2);color:var(--foam)}
+
+/* CONTACT */
+.cb .contact{text-align:left;border-top:1px solid #ffffff10}
+.cb .mail{display:inline-block;font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,6vw,3.6rem);color:var(--sun);text-decoration:none;margin-top:14px;word-break:break-word;border-bottom:4px solid var(--coral)}
+.cb .mail:hover{color:var(--foam)}
+.cb footer{padding-block:28px;border-top:1px solid #ffffff10}
+.cb footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:.75rem;color:var(--mist)}
+
+@media (prefers-reduced-motion:reduce){.cb *{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="cb">
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Cali Bros home">
+        <!-- LOGO: replace the next line with  <img src="YOUR-LOGO-URL" alt="Cali Bros">  -->
+        <div class="logo-mark" aria-hidden="true">CB</div>
+        <span>Cali Bros</span>
+      </a>
+      <ul>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="label">Indie game studio · California</span>
+      <h1>Small studio.<br><em>Big sprites.</em></h1>
+      <p><strong>Cali Bros</strong> makes pixel-art games with old-school strategy in their bones. Hand-drawn units, real bosses, no filler.</p>
+      <div class="btns">
+        <a class="btn primary" href="#games">See the games</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="cliff"></div>
+      <div class="sea"></div>
+    </div>
+  </header>
+
+  <section class="block" id="games">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label">Now in development</span><h2>Caveman RTS</h2></div>
+        <span class="label" style="color:var(--mist)">Working title</span>
+      </div>
+      <div class="feature">
+        <div class="shot">
+          <!-- SCREENSHOT: add  <img src="YOUR-SCREENSHOT-URL" alt="Caveman RTS gameplay">  here -->
+          <span class="tag label">Screenshot coming soon</span>
+        </div>
+        <div class="feature-body">
+          <span class="status">In active development</span>
+          <h3>Top-down strategy from the Stone Age to the castle gate.</h3>
+          <p>A pixel-art RTS in the spirit of the original Command &amp; Conquer. Lead cavemen and knights across forest, desert, field and stone. Harvest trees, berries and rock, trade with merchants, build up from a cave to a castle, and take on bosses like a dragon, a hydra and the Skeleton King.</p>
+          <div class="stats">
+            <div><b>4</b><small>Biomes</small></div>
+            <div><b>6</b><small>Field types</small></div>
+            <div><b>4</b><small>Companions</small></div>
+          </div>
+          <ul class="chips">
+            <li>Pixel art</li><li>Real-time strategy</li><li>Boss fights</li><li>Stone → Bronze Age</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block shelf-wrap">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="label">On the shelf</span><h2>More cartridges loading</h2></div>
+      </div>
+      <div class="shelf">
+        <article class="cart"><span class="slot">02</span><h3>Next project</h3><p>Something new is in the sketchbook. Details drop here first.</p></article>
+        <article class="cart"><span class="slot">03</span><h3>Game jam builds</h3><p>Small experiments, prototypes and VFX tests made in Unity and Unreal.</p></article>
+        <article class="cart"><span class="slot">04</span><h3>Devlog</h3><p>Sprite breakdowns, particle effects and progress notes from the studio.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="studio">
+    <div class="wrap studio">
+      <div><span class="label">The studio</span><h2>Made by hand, one sprite at a time.</h2></div>
+      <div>
+        <p>Cali Bros is an independent studio building games we'd want to play: readable pixel art, satisfying effects and strategy that rewards a plan.</p>
+        <p>Every unit, building and boss is designed in-house, and every spell gets its own particle work. We share the process openly, so check back for devlogs and builds.</p>
+        <ul class="tools"><li>Unity</li><li>Unreal Engine</li><li>Niagara VFX</li><li>Pixel art</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <span class="label">Say hi</span>
+      <h2>Press, playtests, or just to talk games.</h2>
+      <a class="mail" href="mailto:hello@cali-bros.com">hello@cali-bros.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap"><span>© 2026 Cali Bros</span><span>cali-bros.com</span></div>
+  </footer>
+</div>
+</body>
+</html>

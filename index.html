@@ -3,227 +3,350 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Cali Bros is an indie game studio making pixel-art strategy games.">
 <title>Cali Bros Games</title>
+<meta name="description" content="Cali Bros is an independent game studio in California making pixel-art games.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:title" content="Cali Bros Games">
+<meta property="og:description" content="An independent game studio in California making pixel-art games.">
+<meta property="og:image" content="https://cali-bros.com/images/social-preview.png">
+<meta property="og:url" content="https://cali-bros.com/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Figtree:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;700&display=swap">
 <style>
-/* CALI BROS — layout: boardwalk arcade at dusk. Pixel sunset hero, one featured game, a shelf of upcoming titles, studio note, contact. Everything scoped under .cb so it can drop into a Squarespace Code Block. */
-.cb{
-  --ink:#0e1a22;      /* night ocean */
-  --ink-2:#15262f;    /* raised surface */
-  --foam:#e9efe9;     /* main text */
-  --mist:#8fa5a8;     /* secondary text */
-  --sun:#ffb347;      /* amber */
-  --coral:#ff6b4a;    /* sunset coral */
-  --kelp:#46c2a0;     /* sea-green accent for status */
-  --display:"Pixelify Sans","Courier New",monospace;
+/* CALI BROS — white page, colors pulled from the sun logo: sticker-style black outlines, sunset stripes, ocean cyan. */
+:root{
+  --paper:#ffffff;
+  --tint:#f3f4f6;      /* light neutral gray for cards and chips */
+  --ink:#111111;       /* logo outline black */
+  --muted:#55595e;
+  --sun:#ffe500;       /* top of the sun */
+  --orange:#ff7a00;    /* sun stripes */
+  --orange-text:#b84d00; /* readable orange for small text on white */
+  --sea:#00f0ff;       /* the waves */
+  --sea-deep:#00a7b5;
+  --display:"Fredoka","Trebuchet MS",system-ui,sans-serif;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  color-scheme:dark;
-  background:var(--ink);color:var(--foam);font-family:var(--body);font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  color-scheme:light;
 }
-body{margin:0;background:#0e1a22}
-.cb *,.cb *::before,.cb *::after{box-sizing:border-box}
-.cb a{color:inherit}
-.cb :focus-visible{outline:3px solid var(--sun);outline-offset:3px}
-.cb .wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
-.cb .label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.eyebrow{display:inline-block;font-family:var(--display);font-weight:600;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-text)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,5vw,3.2rem)}
+h3{font-size:1.45rem}
+
+/* Sunset stripes — the motif from the logo, used as section dividers */
+.stripes{height:34px;background:
+  linear-gradient(var(--orange) 0 6px,transparent 6px 10px,var(--orange) 10px 15px,transparent 15px 19px,#ff9a1a 19px 23px,transparent 23px 27px,#ffb21f 27px 30px,transparent 30px)}
 
 /* NAV */
-.cb nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid #ffffff10}
-.cb nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.cb .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.cb .logo img{height:40px;width:auto;image-rendering:pixelated}
-.cb .logo-mark{width:40px;height:40px;display:grid;place-items:center;background:var(--coral);color:var(--ink);font-family:var(--display);font-weight:700;font-size:1.1rem;box-shadow:4px 4px 0 var(--sun)}
-.cb .logo span{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:.02em}
-.cb nav ul{display:flex;gap:clamp(12px,3vw,28px);list-style:none;margin:0;padding:0}
-.cb nav ul a{text-decoration:none;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);transition:color .2s}
-.cb nav ul a:hover{color:var(--foam)}
-@media (max-width:560px){.cb nav ul li:not(:last-child){display:none}}
+nav{position:sticky;top:0;z-index:20;background:#ffffffe8;backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.brand img{height:52px;width:auto}
+nav ul{display:flex;gap:clamp(14px,3vw,30px);list-style:none;margin:0;padding:0}
+nav ul a{font-family:var(--display);font-weight:600;font-size:1rem;text-decoration:none;padding-block:4px;border-bottom:3px solid transparent;transition:border-color .2s}
+nav ul a:hover{border-color:var(--orange)}
+@media (max-width:520px){nav ul li:not(:last-child){display:none}}
 
-/* HERO — pixel sunset */
-.cb .hero{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,110px) 0}
-.cb .hero .wrap{position:relative;z-index:2;display:grid;gap:22px}
-.cb .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(3rem,10vw,7.5rem);line-height:.9;margin:0;letter-spacing:-.01em;text-wrap:balance}
-.cb .hero h1 em{font-style:normal;color:var(--sun);text-shadow:6px 6px 0 var(--coral)}
-.cb .hero p{max-width:34ch;margin:0;font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--mist)}
-.cb .hero p strong{color:var(--foam);font-weight:600}
-.cb .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
-.cb .btn{display:inline-block;padding:14px 22px;font-family:var(--display);font-weight:700;font-size:1.05rem;text-decoration:none;border:3px solid var(--foam);transition:transform .15s,box-shadow .15s}
-.cb .btn.primary{background:var(--sun);color:var(--ink);border-color:var(--sun);box-shadow:5px 5px 0 var(--coral)}
-.cb .btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--coral)}
-.cb .btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--coral)}
-.cb .scene{position:relative;height:clamp(220px,32vw,340px);margin-top:clamp(20px,4vw,40px)}
-.cb .sun{position:absolute;left:50%;bottom:44%;width:clamp(180px,30vw,320px);aspect-ratio:1;max-width:100%;transform:translateX(-10%);border-radius:50%;
-  background:linear-gradient(var(--sun) 30%,var(--coral) 85%);
-  -webkit-mask:linear-gradient(#000 50%,transparent 50%),repeating-linear-gradient(#000 0 14px,transparent 14px 20px);
-          mask:linear-gradient(#000 50%,transparent 50%),repeating-linear-gradient(#000 0 14px,transparent 14px 20px)}
-.cb .sea{position:absolute;inset:56% 0 0 0;background:
-  repeating-linear-gradient(#0000 0 10px,#ffb34722 10px 12px),
-  linear-gradient(#1a3440,var(--ink))}
-.cb .sea::before{content:"";position:absolute;left:50%;top:0;width:clamp(120px,22vw,240px);height:100%;transform:translateX(0);
-  background:repeating-linear-gradient(90deg,var(--sun) 0 18px,transparent 18px 34px);opacity:.35;
-  -webkit-mask:repeating-linear-gradient(#000 0 4px,transparent 4px 14px);mask:repeating-linear-gradient(#000 0 4px,transparent 4px 14px);
-  animation:shimmer 3s steps(4) infinite}
-@keyframes shimmer{50%{transform:translateX(12px)}}
-.cb .cliff{position:absolute;left:0;bottom:44%;width:46%;height:48%;background:#0a141a;
-  clip-path:polygon(0 100%,0 20%,8% 20%,8% 8%,18% 8%,18% 28%,30% 28%,30% 44%,44% 44%,44% 60%,58% 60%,58% 74%,74% 74%,74% 88%,100% 88%,100% 100%)}
-.cb .scene::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(#0000 0 3px,#00000022 3px 4px);pointer-events:none}
+/* BUTTONS — sticker style: black outline + hard offset shadow */
+.btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.btn{display:inline-block;padding:13px 24px;font-family:var(--display);font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--ink);background:var(--paper);border:3px solid var(--ink);border-radius:999px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn.primary{background:var(--sun)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+
+/* HERO */
+.hero{position:relative;text-align:center;padding-block:clamp(40px,7vw,80px) clamp(48px,7vw,84px)}
+.hero .logo{width:min(560px,100%);margin:0 auto clamp(16px,3vw,28px);animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.hero h1{font-size:clamp(2.2rem,5.6vw,3.9rem);max-width:18ch;margin-inline:auto}
+.hero h1 span{background:linear-gradient(transparent 62%,var(--sea) 62% 90%,transparent 90%)}
+.hero p{max-width:52ch;margin:18px auto 30px;font-size:clamp(1.05rem,2vw,1.2rem);color:var(--muted)}
 
 /* SECTIONS */
-.cb section.block{padding-block:clamp(64px,9vw,112px)}
-.cb .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:36px}
-.cb h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,5vw,3.2rem);line-height:1;margin:8px 0 0;text-wrap:balance}
-.cb h3{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1.1;margin:0}
+section.block{padding-block:clamp(64px,9vw,108px)}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 24px;margin-bottom:36px}
+.head h2{margin-top:6px}
+.divided{border-top:1px solid #e6e6e6}
 
 /* FEATURED GAME */
-.cb .feature{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
-@media (max-width:820px){.cb .feature{grid-template-columns:1fr}}
-.cb .shot{position:relative;aspect-ratio:16/10;max-width:100%;background:
-  linear-gradient(45deg,#2b4a2c 25%,transparent 25%) 0 0/32px 32px,
-  linear-gradient(-45deg,#2b4a2c 25%,transparent 25%) 0 0/32px 32px,
-  #35593a;border:3px solid var(--foam);box-shadow:10px 10px 0 var(--coral);overflow:hidden}
-.cb .shot img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;display:block}
-.cb .shot .tag{position:absolute;left:12px;top:12px;background:var(--ink);color:var(--foam);padding:6px 10px}
-.cb .feature-body{display:grid;gap:18px;min-width:0}
-.cb .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--kelp)}
-.cb .status::before{content:"";width:10px;height:10px;background:var(--kelp);animation:blink 1.2s steps(2) infinite}
-@keyframes blink{50%{opacity:.2}}
-.cb .feature-body p{margin:0;color:var(--mist)}
-.cb .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ffffff18;border:1px solid #ffffff18}
-.cb .stats div{background:var(--ink);padding:14px 12px}
-.cb .stats b{display:block;font-family:var(--display);font-size:1.7rem;color:var(--sun);line-height:1;font-variant-numeric:tabular-nums}
-.cb .stats small{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mist)}
-.cb .chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
-.cb .chips li{font-size:.85rem;padding:5px 10px;border:1px solid #ffffff2a;color:var(--foam)}
+.feature{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,4vw,52px);align-items:center}
+.feature.flip{grid-template-columns:1fr 1.25fr}
+.feature.flip .shot{order:2}
+@media (max-width:840px){.feature,.feature.flip{grid-template-columns:1fr}.feature.flip .shot{order:0}}
+.shot{aspect-ratio:16/9;border:3px solid var(--ink);border-radius:18px;box-shadow:8px 8px 0 var(--ink);overflow:hidden;background:#0b0f1e}
+.shot img{width:100%;height:100%;object-fit:cover}
+.feature-body{display:grid;gap:18px;min-width:0}
+.feature-body p{margin:0;color:var(--muted)}
+.status{display:inline-flex;align-items:center;gap:8px;width:fit-content;font-family:var(--display);font-weight:600;font-size:.9rem;padding:4px 12px;border-radius:999px;background:#d9fbfd;color:#005a61}
+.status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--sea-deep);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:3px solid var(--ink);border-radius:14px;overflow:hidden}
+.stats div{padding:14px 12px;text-align:center}
+.stats div+div{border-left:3px solid var(--ink)}
+.stats b{display:block;font-family:var(--display);font-size:2rem;line-height:1;color:var(--orange-text);font-variant-numeric:tabular-nums}
+.stats small{font-size:.8rem;font-weight:500;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{font-size:.88rem;font-weight:500;padding:5px 12px;border:2px solid var(--ink);border-radius:999px}
+.icon-row{display:flex;flex-wrap:wrap;gap:4px;list-style:none;margin:0;padding:0}
+.icon-row img,.pillars img{image-rendering:pixelated}
+.icon-row img{width:48px;height:48px;animation:bob 2.4s ease-in-out infinite}
+.icon-row li:nth-child(even) img{animation-delay:-1.2s}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@media (max-width:520px){.icon-row img{width:36px;height:36px}}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:clamp(40px,6vw,64px)}
+@media (max-width:900px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.pillars{grid-template-columns:1fr}}
+.pillars div{display:grid;align-content:start;gap:6px;padding:20px;background:var(--tint);border-radius:16px}
+.pillars img{width:48px;height:48px;margin:-4px 0 2px -4px}
+.pillars b{font-family:var(--display);font-size:1.3rem}
+.pillars span{color:var(--muted);font-size:.95rem}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);margin-top:clamp(32px,5vw,48px)}
+@media (max-width:700px){.gallery{grid-template-columns:1fr}}
+.gallery figure{margin:0}
+.gallery img{width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink);background:#0b0f1e}
+.gallery figcaption{margin-top:12px;font-size:.92rem;color:var(--muted)}
 
-/* UPCOMING SHELF */
-.cb .shelf-wrap{background:var(--ink-2);border-block:1px solid #ffffff10}
-.cb .shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media (max-width:820px){.cb .shelf{grid-template-columns:1fr}}
-.cb .cart{display:grid;gap:12px;padding:22px;background:var(--ink);border:2px dashed #ffffff26;transition:border-color .2s,transform .2s}
-.cb .cart:hover{border-color:var(--sun);transform:translateY(-3px)}
-.cb .cart .slot{font-family:var(--display);font-size:3rem;line-height:1;color:#ffffff1f}
-.cb .cart p{margin:0;color:var(--mist);font-size:.95rem}
+/* COMING UP */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media (max-width:840px){.cards{grid-template-columns:1fr}}
+.card{display:grid;align-content:start;gap:10px;padding:26px;background:var(--paper);border:3px solid var(--ink);border-radius:18px;box-shadow:6px 6px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
+.card .num{width:46px;height:46px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.15rem;border:3px solid var(--ink);border-radius:50%}
+.card:nth-child(1) .num{background:var(--sun)}
+.card:nth-child(2) .num{background:var(--orange)}
+.card:nth-child(3) .num{background:var(--sea)}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
 
 /* STUDIO */
-.cb .studio{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,5vw,72px);align-items:start}
-@media (max-width:820px){.cb .studio{grid-template-columns:1fr}}
-.cb .studio p{margin:0 0 16px;max-width:60ch;color:var(--mist)}
-.cb .studio p:first-child{color:var(--foam);font-size:1.2rem}
-.cb .tools{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:20px 0 0;padding:0}
-.cb .tools li{font-family:var(--mono);font-size:.78rem;padding:8px 12px;background:var(--ink-2);color:var(--foam)}
+.studio{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:840px){.studio{grid-template-columns:1fr}}
+.studio p{margin:0 0 16px;max-width:60ch;color:var(--muted)}
+.studio p.lead{color:var(--ink);font-size:1.2rem}
+.values{display:grid;gap:14px;list-style:none;margin:24px 0 0;padding:0}
+.values li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.values li::before{content:"";width:16px;height:16px;margin-top:5px;border-radius:50%;border:3px solid var(--ink);background:var(--orange)}
+.values b{display:block;font-family:var(--display);font-size:1.1rem}
+.values span{color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:28px 0 0;padding:0}
+.tools li{font-weight:500;font-size:.9rem;padding:7px 14px;background:var(--tint);border-radius:8px}
 
-/* CONTACT */
-.cb .contact{text-align:left;border-top:1px solid #ffffff10}
-.cb .mail{display:inline-block;font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,6vw,3.6rem);color:var(--sun);text-decoration:none;margin-top:14px;word-break:break-word;border-bottom:4px solid var(--coral)}
-.cb .mail:hover{color:var(--foam)}
-.cb footer{padding-block:28px;border-top:1px solid #ffffff10}
-.cb footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:.75rem;color:var(--mist)}
+/* CONTACT — the ocean */
+.contact{position:relative;background:var(--sea);text-align:center;padding-block:clamp(72px,10vw,120px) clamp(64px,9vw,100px)}
+.contact::before{content:"";position:absolute;left:0;right:0;top:-1px;height:28px;
+  background:radial-gradient(circle at 50% 0,var(--paper) 20px,transparent 21px) 0 0/48px 28px repeat-x}
+.contact p{max-width:46ch;margin:14px auto 0;color:#0b3b40;font-size:1.1rem}
+.mail{display:inline-block;margin-top:28px;font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,5.5vw,2.6rem);color:var(--ink);text-decoration:none;background:var(--paper);border:3px solid var(--ink);border-radius:999px;padding:12px clamp(20px,4vw,40px);box-shadow:6px 6px 0 var(--ink);word-break:break-word;transition:transform .15s,box-shadow .15s}
+.mail:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
 
-@media (prefers-reduced-motion:reduce){.cb *{animation:none!important;transition:none!important}}
+footer{background:var(--ink);color:#d9d9d9;padding-block:26px;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--sun)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<div class="cb">
-  <nav>
-    <div class="wrap">
-      <a class="logo" href="#top" aria-label="Cali Bros home">
-        <!-- LOGO: replace the next line with  <img src="YOUR-LOGO-URL" alt="Cali Bros">  -->
-        <div class="logo-mark" aria-hidden="true">CB</div>
-        <span>Cali Bros</span>
-      </a>
-      <ul>
-        <li><a href="#games">Games</a></li>
-        <li><a href="#studio">Studio</a></li>
-        <li><a href="#contact">Contact</a></li>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="images/logo.png" alt="Cali Bros" width="78" height="52"></a>
+    <ul>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <img class="logo" src="images/logo-hero.png" alt="Cali Bros" width="1100" height="734">
+    <span class="eyebrow">Independent game studio · California</span>
+    <h1>Indie games with <span>West Coast</span> energy.</h1>
+    <p>Cali Bros is a small studio making pixel-art games full of big ideas, strange worlds and the kind of “one more turn” you stay up late for.</p>
+    <div class="btns">
+      <a class="btn primary" href="#games">See our games</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<div class="stripes" aria-hidden="true"></div>
+
+<section class="block" id="games">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Now in development</span><h2>Space Fruit</h2></div>
+      <ul class="icon-row" aria-hidden="true">
+        <li><img src="images/fruit/starfruit.png" alt=""></li><li><img src="images/fruit/mendmelon.png" alt=""></li><li><img src="images/fruit/zestberry.png" alt=""></li><li><img src="images/fruit/bolt_banana.png" alt=""></li><li><img src="images/fruit/phoenix_pomelo.png" alt=""></li><li><img src="images/fruit/dreamfruit.png" alt=""></li><li><img src="images/fruit/voltcherry.png" alt=""></li><li><img src="images/fruit/comet_kumquat.png" alt=""></li>
       </ul>
     </div>
-  </nav>
-
-  <header class="hero" id="top">
-    <div class="wrap">
-      <span class="label">Indie game studio · California</span>
-      <h1>Small studio.<br><em>Big sprites.</em></h1>
-      <p><strong>Cali Bros</strong> makes pixel-art games with old-school strategy in their bones. Hand-drawn units, real bosses, no filler.</p>
-      <div class="btns">
-        <a class="btn primary" href="#games">See the games</a>
-        <a class="btn" href="#contact">Get in touch</a>
+    <div class="feature">
+      <div class="shot">
+        <img src="images/space-fruit-ship.png" alt="Space Fruit: a fully built ship with gardens, an orchard, a reactor, crew quarters and a seed lab" width="1280" height="720">
       </div>
-    </div>
-    <div class="scene" aria-hidden="true">
-      <div class="sun"></div>
-      <div class="cliff"></div>
-      <div class="sea"></div>
-    </div>
-  </header>
-
-  <section class="block" id="games">
-    <div class="wrap">
-      <div class="head">
-        <div><span class="label">Now in development</span><h2>Caveman RTS</h2></div>
-        <span class="label" style="color:var(--mist)">Working title</span>
-      </div>
-      <div class="feature">
-        <div class="shot">
-          <!-- SCREENSHOT: add  <img src="YOUR-SCREENSHOT-URL" alt="Caveman RTS gameplay">  here -->
-          <span class="tag label">Screenshot coming soon</span>
+      <div class="feature-body">
+        <span class="status">In active development</span>
+        <h3>Somewhere out there grows the fruit of immortality.</h3>
+        <p>Space Fruit is a pixel-art space colony sim. Build your ship room by room, grow strange fruit in its gardens and feed it to a crew with their own skills, moods and needs. Every fruit does something: heal the wounded, sharpen the gunners, keep the engineers awake. Then follow the old star charts, one sector at a time, in search of a tree that never dies.</p>
+        <div class="stats">
+          <div><b>74</b><small>Fruits</small></div>
+          <div><b>25</b><small>Ship rooms</small></div>
+          <div><b>15</b><small>Enemy ships</small></div>
         </div>
-        <div class="feature-body">
-          <span class="status">In active development</span>
-          <h3>Top-down strategy from the Stone Age to the castle gate.</h3>
-          <p>A pixel-art RTS in the spirit of the original Command &amp; Conquer. Lead cavemen and knights across forest, desert, field and stone. Harvest trees, berries and rock, trade with merchants, build up from a cave to a castle, and take on bosses like a dragon, a hydra and the Skeleton King.</p>
-          <div class="stats">
-            <div><b>4</b><small>Biomes</small></div>
-            <div><b>6</b><small>Field types</small></div>
-            <div><b>4</b><small>Companions</small></div>
-          </div>
-          <ul class="chips">
-            <li>Pixel art</li><li>Real-time strategy</li><li>Boss fights</li><li>Stone → Bronze Age</li>
-          </ul>
+        <ul class="chips">
+          <li>Colony sim</li><li>Ship building</li><li>Fruit crossbreeding</li><li>Space combat</li><li>English &amp; 中文</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div><img src="images/fruit/zestberry.png" alt=""><b>Grow</b><span>Find 58 kinds of seed among the stars and cross them in the Seed Lab to breed 16 hybrids.</span></div>
+      <div><img src="images/fruit/voltcherry.png" alt=""><b>Build</b><span>Add kitchens, reactors, orchards, shields and more, then keep them powered and crewed.</span></div>
+      <div><img src="images/fruit/comet_kumquat.png" alt=""><b>Explore</b><span>Chart a path through each sector: wreck fields, trading outposts, strange signals and a casino.</span></div>
+      <div><img src="images/fruit/phoenix_pomelo.png" alt=""><b>Survive</b><span>Pirates and warlords prowl the lanes. Man the guns, raise the shields and patch the hull.</span></div>
+    </div>
+
+    <div class="gallery">
+      <figure><img src="images/space-fruit-combat.png" alt="Space Fruit combat: a Corsair Dreadnought firing on the player's ship" width="1280" height="720" loading="lazy"><figcaption>Under fire from a Corsair Dreadnought.</figcaption></figure>
+      <figure><img src="images/space-fruit-casino.png" alt="Space Fruit: a robot dealer at the Nova Casino blackjack table" width="1280" height="720" loading="lazy"><figcaption>One hand of blackjack at the Nova Casino.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block divided" id="primal-man">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Also in development</span><h2>Primal Man</h2></div>
+      <ul class="icon-row" aria-hidden="true">
+        <li><img src="images/items/stone_club.png" alt=""></li><li><img src="images/items/flint_spear.png" alt=""></li><li><img src="images/items/hunting_bow.png" alt=""></li><li><img src="images/items/bone_armor.png" alt=""></li><li><img src="images/items/bronze_sword.png" alt=""></li><li><img src="images/items/dragonslayer.png" alt=""></li><li><img src="images/items/apple.png" alt=""></li><li><img src="images/items/treasure_chest.png" alt=""></li>
+      </ul>
+    </div>
+    <div class="feature flip">
+      <div class="shot">
+        <img src="images/primal-man-castle.png" alt="Primal Man: a player's castle with a berry field, archery range and woodlot around it" width="1280" height="720" loading="lazy">
+      </div>
+      <div class="feature-body">
+        <span class="status">In active development</span>
+        <h3>Start as a caveman. Build a castle. Rise through the ages.</h3>
+        <p>Primal Man is a top-down multiplayer survival game for phones. Gather wood and stone on a huge island, craft weapons and armor, tame horses, bulls and even elephants, and hire a husky, archer, knight or mage to fight at your side. Your cave grows into a castle with fields around it, and the farther you roam from home, the deadlier the goblins, beasts and bosses get.</p>
+        <div class="stats">
+          <div><b>10</b><small>Bosses</small></div>
+          <div><b>4</b><small>Companions</small></div>
+          <div><b>3</b><small>Mounts</small></div>
         </div>
+        <ul class="chips">
+          <li>Multiplayer</li><li>Survival</li><li>Crafting</li><li>Taming &amp; riding</li><li>Made for phones</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <section class="block shelf-wrap">
-    <div class="wrap">
-      <div class="head">
-        <div><span class="label">On the shelf</span><h2>More cartridges loading</h2></div>
+    <div class="pillars">
+      <div><img src="images/items/stone_club.png" alt=""><b>Gather &amp; craft</b><span>Chop, mine and hunt, then turn it into clubs, spears, bows, potions and bronze armor.</span></div>
+      <div><img src="images/items/apple.png" alt=""><b>Tame &amp; ride</b><span>Win over a wild horse, bull or elephant with a pile of apples, then ride it into battle.</span></div>
+      <div><img src="images/items/war_banner.png" alt=""><b>Build a base</b><span>Grow your cave into a castle, plant fields around it and furnish a safe room inside.</span></div>
+      <div><img src="images/items/dragonslayer.png" alt=""><b>Hunt bosses</b><span>The Skeleton King, the Spider Queen, a Hydra and a Dragon guard lairs far from home.</span></div>
+    </div>
+
+    <div class="gallery">
+      <figure><img src="images/primal-man-elephant.png" alt="Primal Man: a knight riding an armored elephant past the Trading Post and Potion Shop" width="1280" height="720" loading="lazy"><figcaption>Riding a war elephant through the market.</figcaption></figure>
+      <figure><img src="images/primal-man-throne.png" alt="Primal Man: the throne room inside a player's castle" width="1280" height="720" loading="lazy"><figcaption>Inside your castle, safe from everything outside.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block divided" id="riot">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Also in development</span><h2>RIOT</h2></div>
+      <ul class="icon-row" aria-hidden="true">
+        <li><img src="images/riot/chant.png" alt=""></li><li><img src="images/riot/signs.png" alt=""></li><li><img src="images/riot/drums.png" alt=""></li><li><img src="images/riot/umbrellas.png" alt=""></li><li><img src="images/riot/hold_line.png" alt=""></li><li><img src="images/riot/megaphone.png" alt=""></li><li><img src="images/riot/drone.png" alt=""></li><li><img src="images/riot/barriers.png" alt=""></li>
+      </ul>
+    </div>
+    <div class="feature">
+      <div class="shot">
+        <img src="images/riot-campus.png" alt="RIOT: a crowd of protesters with signs facing a police line on a campus street" width="1280" height="720" loading="lazy">
       </div>
-      <div class="shelf">
-        <article class="cart"><span class="slot">02</span><h3>Next project</h3><p>Something new is in the sketchbook. Details drop here first.</p></article>
-        <article class="cart"><span class="slot">03</span><h3>Game jam builds</h3><p>Small experiments, prototypes and VFX tests made in Unity and Unreal.</p></article>
-        <article class="cart"><span class="slot">04</span><h3>Devlog</h3><p>Sprite breakdowns, particle effects and progress notes from the studio.</p></article>
+      <div class="feature-body">
+        <span class="status">In active development</span>
+        <h3>Choose your side. Control the street.</h3>
+        <p>RIOT is a crowd-control strategy game you can play from either side of the line. Lead the protesters or command the police through a 50-level campaign across downtown, a college campus, the City Hall plaza, the bridges and the docks. Hundreds of people act on their own, so you don’t give orders, you give suggestions, and not everyone follows. Keep the public on your side, watch the tension, and don’t push the other side past its breaking point.</p>
+        <div class="stats">
+          <div><b>50</b><small>Levels</small></div>
+          <div><b>52</b><small>Abilities</small></div>
+          <div><b>260</b><small>Biggest crowd</small></div>
+        </div>
+        <ul class="chips">
+          <li>Strategy</li><li>Crowd simulation</li><li>Play both sides</li><li>Pixel art</li><li>Made for phones</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <section class="block" id="studio">
-    <div class="wrap studio">
-      <div><span class="label">The studio</span><h2>Made by hand, one sprite at a time.</h2></div>
-      <div>
-        <p>Cali Bros is an independent studio building games we'd want to play: readable pixel art, satisfying effects and strategy that rewards a plan.</p>
-        <p>Every unit, building and boss is designed in-house, and every spell gets its own particle work. We share the process openly, so check back for devlogs and builds.</p>
-        <ul class="tools"><li>Unity</li><li>Unreal Engine</li><li>Niagara VFX</li><li>Pixel art</li></ul>
-      </div>
+    <div class="pillars">
+      <div><img src="images/riot/hold_line.png" alt=""><b>Pick a side</b><span>Play the whole campaign as the police, the protesters, or both. Each side has its own tactics.</span></div>
+      <div><img src="images/riot/leader.png" alt=""><b>Suggest, don’t command</b><span>Every person in the crowd thinks for themselves. Your calls nudge them, and not everyone listens.</span></div>
+      <div><img src="images/riot/livestream.png" alt=""><b>Win the public</b><span>Force works, but every move shifts public opinion. Lose the public and you lose the street.</span></div>
+      <div><img src="images/riot/drone.png" alt=""><b>Build your loadout</b><span>Unlock new tactics as you win, then pick up to eight to bring into each level.</span></div>
     </div>
-  </section>
 
-  <section class="block contact" id="contact">
-    <div class="wrap">
-      <span class="label">Say hi</span>
-      <h2>Press, playtests, or just to talk games.</h2>
-      <a class="mail" href="mailto:hello@cali-bros.com">hello@cali-bros.com</a>
+    <div class="gallery">
+      <figure><img src="images/riot-sides.png" alt="RIOT: the Choose Your Side screen with police and protester cards" width="1280" height="720" loading="lazy"><figcaption>Police or protesters: both get the full campaign.</figcaption></figure>
+      <figure><img src="images/riot-night.png" alt="RIOT: a huge crowd faces a police line downtown at night" width="1280" height="720" loading="lazy"><figcaption>After dark downtown in the final chapter, The Long Night.</figcaption></figure>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="wrap"><span>© 2026 Cali Bros</span><span>cali-bros.com</span></div>
-  </footer>
-</div>
+<section class="block divided">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="eyebrow">Coming up</span><h2>More on the horizon</h2></div>
+    </div>
+    <div class="cards">
+      <article class="card"><span class="num">04</span><h3>Next project</h3><p>Something new is already in the works. Details land here first.</p></article>
+      <article class="card"><span class="num">05</span><h3>Game jam builds</h3><p>Small experiments, prototypes and effects tests built in Unity and Unreal.</p></article>
+      <article class="card"><span class="num">06</span><h3>Devlog</h3><p>Behind-the-scenes looks at art, effects and progress from the studio.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block divided" id="studio">
+  <div class="wrap studio">
+    <div><span class="eyebrow">The studio</span><h2>Small team. Big sunsets.</h2></div>
+    <div>
+      <p class="lead">Cali Bros is an independent studio building the games we’ve always wanted to play.</p>
+      <p>We keep the team small and the ideas big. Every project starts with one question: would we stay up all night playing this? If the answer is yes, we build it.</p>
+      <ul class="values">
+        <li><div><b>Readable at a glance</b><span>Crisp pixel art that tells you what’s happening the moment you look.</span></div></li>
+        <li><div><b>Effects with punch</b><span>Spells, impacts and explosions that feel as good as they look.</span></div></li>
+        <li><div><b>Strategy that rewards a plan</b><span>Smart choices beat button mashing, every time.</span></div></li>
+      </ul>
+      <ul class="tools"><li>Godot</li><li>Unity</li><li>Unreal Engine</li><li>Niagara VFX</li><li>Pixel art</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#0b3b40">Say hi</span>
+    <h2>Press, playtests, or just to talk games.</h2>
+    <p>We read every message. Drop us a line and we’ll get back to you.</p>
+    <a class="mail" href="mailto:hello@cali-bros.com">hello@cali-bros.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Cali Bros</span><a href="https://cali-bros.com">cali-bros.com</a></div>
+</footer>
+
 </body>
 </html>
